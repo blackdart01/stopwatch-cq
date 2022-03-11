@@ -11,8 +11,9 @@
 
 <body>
     <div class="container">
-        <!-- <div> -->
-        <label for="clock" id="clock">00:00:00</label>
+        <label for="clock" id="clock">
+            <span id="hr"> 00</span>:<span id="min"> 00</span>:<span id="sec"> 00</span>:<span id="msec">
+                000</span></label>
         <div class="align">
             <button type="button" id="lap">Lap</button>
             <button type="button" id="start" class="start">Start</button>
@@ -24,7 +25,6 @@
                 <p id="laptime">00:10:50:20</p>
             </div>
         </div>
-        <!-- </div> -->
     </div>
     <script src="app.js"></script>
 </body>
