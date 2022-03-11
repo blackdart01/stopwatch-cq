@@ -7,6 +7,7 @@ startBtn.addEventListener('click', () => {
         startBtn.classList.remove('start', 'start:hover')
         startBtn.classList.add('stop', 'stop:hover');
         startBtn.classList.toggle('stop');
+        startBtn.classList.toggle('stop:hover');
         start();
     }
     else {
@@ -14,6 +15,7 @@ startBtn.addEventListener('click', () => {
         startBtn.classList.remove('stop', 'stop:hover')
         startBtn.classList.add('start', 'start:hover');
         startBtn.classList.toggle('start');
+        startBtn.classList.toggle('start:hover');
         stop();
     }
 });
@@ -74,4 +76,18 @@ lapBtn.addEventListener('click', () => {
     lapSec = s < 10 ? (' 0' + s) : (' ' + s);
     lapMSec = ms < 100 ? (' 00' + ms) : (' ' + ms);
     console.log(lapHr + ' ' + lapMin + ' ' + lapSec + ' ' + lapMSec);
-})
+    populate(lapHr, lapMin, lapSec, lapMSec);
+});
+
+let n = 0;
+let content = '';
+let populate = (lapHr, lapMin, lapSec, lapMSec) => {
+    let expand = document.getElementById("populate");
+    let lapTime = document.getElementById("laptime");
+    content += `        <hr style="background-color: grey;border-radius: 2px;border-color: grey;">
+                        <div class="laprow">
+                            <p id="lapcount">${'Lap' + ++n}</p>
+                            <p id="laptime">${lapHr}:${lapMin}:${lapSec}:${lapMSec}</p>
+                         </div>`;
+    expand.innerHTML = content;
+};
