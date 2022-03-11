@@ -3,20 +3,18 @@ let startBtn = document.getElementById('start');
 // Toggle CSS Classes for Start button to Stop and vice-versa
 startBtn.addEventListener('click', () => {
     if (startBtn.innerHTML == 'Start') {
+        start();
         startBtn.innerHTML = 'Stop';
         startBtn.classList.remove('start', 'start:hover')
         startBtn.classList.add('stop', 'stop:hover');
-        startBtn.classList.toggle('stop');
-        startBtn.classList.toggle('stop:hover');
-        start();
+        startBtn.classList.toggle('stop stop:hover');
     }
     else {
+        stop();
         startBtn.innerHTML = 'Start';
         startBtn.classList.remove('stop', 'stop:hover')
         startBtn.classList.add('start', 'start:hover');
-        startBtn.classList.toggle('start');
-        startBtn.classList.toggle('start:hover');
-        stop();
+        startBtn.classList.toggle('start start:hover');
     }
 });
 
@@ -67,8 +65,11 @@ start = () => { timerId = setInterval(calcTime, 10) };
 stop = () => { resetTime() };
 
 // population lap container
-
+let onLapBtnClickedFirstTime = 0;
+let content = '';
 let lapBtn = document.getElementById('lap');
+let expand = document.getElementById("populate");
+let lapCounter = 0;
 lapBtn.addEventListener('click', () => {
     let lapHr, lapMin, lapSec, lapMSec;
     lapHr = h < 10 ? (' 0' + h) : (' ' + h);
@@ -77,16 +78,23 @@ lapBtn.addEventListener('click', () => {
     lapMSec = ms < 100 ? (' 00' + ms) : (' ' + ms);
     console.log(lapHr + ' ' + lapMin + ' ' + lapSec + ' ' + lapMSec);
     populate(lapHr, lapMin, lapSec, lapMSec);
+    if (onLapBtnClickedFirstTime == 0) {
+        let btn = document.createElement('button');
+        btn.type = "button";
+        btn.id = "resetlapbtn";
+        // btn.style.margin = "5px 50px";
+        btn.innerHTML = "Reset Laps";
+        document.body.appendChild(btn);
+        onLapBtnClickedFirstTime = 1;
+        let btnId = document.getElementById(btn.id);
+        btnId.addEventListener('click', () => { console.log(content); content = ''; })
+    }
 });
 
-let n = 0;
-let content = '';
 let populate = (lapHr, lapMin, lapSec, lapMSec) => {
-    let expand = document.getElementById("populate");
-    let lapTime = document.getElementById("laptime");
     content += `        <hr style="background-color: grey;border-radius: 2px;border-color: grey;">
                         <div class="laprow">
-                            <p id="lapcount">${'Lap' + ++n}</p>
+                            <p id="lapcount">${'Lap ' + ++lapCounter}</p>
                             <p id="laptime">${lapHr}:${lapMin}:${lapSec}:${lapMSec}</p>
                          </div>`;
     expand.innerHTML = content;

@@ -11,36 +11,50 @@ body {
   transform: translate(-50%, -50%);
   font-family: lato;
 }
+.container {
+  width: 50vw;
+}
 #clock {
-  font-size: 5em;
-  margin: 0 1em;
+  width: 100vw;
+  font-size: 4em;
+  margin: 0 10vw;
   color: rgb(255, 115, 0);
 }
 .align {
-  margin-top: 15%;
+  margin-top: 5%;
   display: flex;
   justify-content: space-between !important;
   align-items: center;
   font-weight: 600;
 }
-.align button {
+#resetlapbtn {
+  position: absolute;
+  left: 50%;
+  margin-top: 10px;
+  transform: translateX(-50%);
+  padding: 5px 15px !important;
+}
+.align button,
+#resetlapbtn {
   font-size: 1.2em;
   background-color: rgba(128, 128, 128, 0.6);
   color: rgb(216, 216, 216);
   outline: none;
   border: 2px solid transparent;
-  border-radius: 50%;
-  padding: 25px 20px;
+  border-radius: 25px;
+  padding: 10px 80px;
   cursor: pointer;
 }
 .align button:hover {
   transition: 150ms ease;
   color: white;
 }
-#lap {
+#lap,
+#resetlapbtn {
   background-color: rgba(128, 128, 128, 0.3);
 }
-#lap:hover {
+#lap:hover,
+#resetlapbtn:hover {
   box-shadow: 0 0 50px 10px rgba(128, 128, 128, 0.8);
   background-color: rgba(128, 128, 128, 0.6);
 }
@@ -60,13 +74,13 @@ body {
   box-shadow: 0 0 50px 10px rgba(245, 40, 40, 0.6);
 }
 .populate {
-  max-height: 40vh;
-  min-height: 40vh;
+  border-bottom: 1px solid grey;
+  max-height: 45vh;
+  min-height: 45vh;
   overflow-y: auto;
   overflow-x: hidden;
-  margin-top: 10%;
-  /* justify-content: center;
-  align-items: center; */
+  margin-top: 5%;
+  padding-bottom: 25px;
 }
 .laprow {
   margin: 10px 0;
@@ -74,7 +88,6 @@ body {
   justify-content: space-around;
 }
 hr {
-  /* height: 0em; */
   width: 80%;
   margin: 0 10%;
   background-color: grey;
