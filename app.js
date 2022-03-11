@@ -75,19 +75,26 @@ lapBtn.addEventListener('click', () => {
     lapHr = h < 10 ? (' 0' + h) : (' ' + h);
     lapMin = m < 10 ? (' 0' + m) : (' ' + m);
     lapSec = s < 10 ? (' 0' + s) : (' ' + s);
-    lapMSec = ms < 100 ? (' 00' + ms) : (' ' + ms);
-    console.log(lapHr + ' ' + lapMin + ' ' + lapSec + ' ' + lapMSec);
+    lapMSec = ms < 100 ? (' 0' + ms) : (' ' + ms);
+    if (content.length == 0)
+        expand.innerHTML = 'No Laps Recorded';
     populate(lapHr, lapMin, lapSec, lapMSec);
+    if (content.length == 0) {
+        expand.innerHTML = 'No Laps Recorded';
+    }
     if (onLapBtnClickedFirstTime == 0) {
         let btn = document.createElement('button');
         btn.type = "button";
         btn.id = "resetlapbtn";
-        // btn.style.margin = "5px 50px";
         btn.innerHTML = "Reset Laps";
         document.body.appendChild(btn);
         onLapBtnClickedFirstTime = 1;
         let btnId = document.getElementById(btn.id);
-        btnId.addEventListener('click', () => { console.log(content); content = ''; })
+        btnId.addEventListener('click', () => {
+            content = '';
+            lapCounter = 0;
+            expand.innerHTML = content;
+        })
     }
 });
 
