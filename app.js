@@ -72,29 +72,31 @@ let expand = document.getElementById("populate");
 let lapCounter = 0;
 lapBtn.addEventListener('click', () => {
     let lapHr, lapMin, lapSec, lapMSec;
-    lapHr = h < 10 ? (' 0' + h) : (' ' + h);
-    lapMin = m < 10 ? (' 0' + m) : (' ' + m);
-    lapSec = s < 10 ? (' 0' + s) : (' ' + s);
-    lapMSec = ms < 100 ? (' 0' + ms) : (' ' + ms);
-    if (content.length == 0)
-        expand.innerHTML = 'No Laps Recorded';
-    populate(lapHr, lapMin, lapSec, lapMSec);
-    if (content.length == 0) {
-        expand.innerHTML = 'No Laps Recorded';
-    }
-    if (onLapBtnClickedFirstTime == 0) {
-        let btn = document.createElement('button');
-        btn.type = "button";
-        btn.id = "resetlapbtn";
-        btn.innerHTML = "Reset Laps";
-        document.body.appendChild(btn);
-        onLapBtnClickedFirstTime = 1;
-        let btnId = document.getElementById(btn.id);
-        btnId.addEventListener('click', () => {
-            content = '';
-            lapCounter = 0;
-            expand.innerHTML = content;
-        })
+    if (h != '00' || m != '00' || s != '00' || ms != '000') {
+        lapHr = h < 10 ? (' 0' + h) : (' ' + h);
+        lapMin = m < 10 ? (' 0' + m) : (' ' + m);
+        lapSec = s < 10 ? (' 0' + s) : (' ' + s);
+        lapMSec = ms < 100 ? (' 0' + ms) : (' ' + ms);
+        if (content.length == 0)
+            expand.innerHTML = 'No Laps Recorded';
+        populate(lapHr, lapMin, lapSec, lapMSec);
+        if (content.length == 0) {
+            expand.innerHTML = 'No Laps Recorded';
+        }
+        if (onLapBtnClickedFirstTime == 0) {
+            let btn = document.createElement('button');
+            btn.type = "button";
+            btn.id = "resetlapbtn";
+            btn.innerHTML = "Reset Laps";
+            document.body.appendChild(btn);
+            onLapBtnClickedFirstTime = 1;
+            let btnId = document.getElementById(btn.id);
+            btnId.addEventListener('click', () => {
+                content = '';
+                lapCounter = 0;
+                expand.innerHTML = content;
+            })
+        }
     }
 });
 
