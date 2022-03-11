@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: black;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: lato;
+}
+#clock {
+  font-size: 5em;
+  margin: 0 1em;
+  color: rgb(255, 115, 0);
+}
+.align {
+  margin-top: 15%;
+  display: flex;
+  justify-content: space-between !important;
+  align-items: center;
+  font-weight: 600;
+}
+.align button {
+  font-size: 1.2em;
+  background-color: rgba(128, 128, 128, 0.6);
+  color: rgb(216, 216, 216);
+  outline: none;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  padding: 25px 20px;
+  cursor: pointer;
+}
+.align button:hover {
+  transition: 150ms ease;
+  color: white;
+}
+#lap {
+  background-color: rgba(128, 128, 128, 0.3);
+}
+#lap:hover {
+  box-shadow: 0 0 50px 10px rgba(128, 128, 128, 0.8);
+  background-color: rgba(128, 128, 128, 0.6);
+}
+.align .start {
+  color: white;
+  background-color: rgba(113, 255, 113, 0.2);
+}
+.start:hover {
+  box-shadow: 0 0 50px 10px rgba(113, 255, 113, 0.6);
+  background-color: rgba(113, 255, 113, 0.4);
+}
+.stop {
+  color: white;
+  background-color: rgba(245, 40, 40, 0.4) !important;
+}
+.stop:hover {
+  box-shadow: 0 0 50px 10px rgba(245, 40, 40, 0.6);
+}
+.populate {
+  margin-top: 10%;
+}
+.laprow {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+}
+hr {
+  height: 0em;
+  background-color: grey;
+  border-radius: 2px;
+  border-color: grey;
+}
